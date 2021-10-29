@@ -24,6 +24,18 @@ app.get('/api/books', async (_request, response) => {
   response.status(200).send(allBooks);
 });
 
+//get a single book
+app.get('/api/books/:titel', async (request, response) => {
+  const bookCollection = getBookCollection();
+  const singleBook = request.params.titel;
+  const bookRequest = await bookCollection.findOne({ title: singleBook });
+  if (!bookRequest) {
+    response.status(404).send('Unknown titel');
+  } else {
+    response.send(bookRequest);
+  }
+});
+
 //add a new chart of books
 app.post('/api/books', async (request, response) => {
   const bookCollection = getBookCollection();

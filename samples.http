@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/books HTTP/1.1
 
 ###GET a single book
-GET http://localhost:3000/api/books/Der Medicus HTTP/1.1
+GET http://localhost:3000/api/books/Tintenherz HTTP/1.1
 
 ###GET a single book that does not exist
 GET http://localhost:3000/api/books/asinglebook HTTP/1.1
