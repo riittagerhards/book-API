@@ -1,0 +1,84 @@
+{
+  "books": [
+    {
+      "title": "Der Herr der Ringe",
+      "author": "John R. R. Tolkien",
+      "originaltitle": "The Lord of the Rings",
+      "release": "1954-1955",
+      "genre": "Fantasy",
+      "cover": "https://www.klett-cotta.de/media/1/9783608939842.jpg"
+    },
+    {
+      "title": "Die Säulen der Erde",
+      "author": "Ken Follett",
+      "originaltitle": "The Pillars of the Earth",
+      "release": "1990",
+      "genre": "Historischer Roman",
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/51WBzdTFOFL.jpg"
+    },
+    {
+      "title": "Das Parfum",
+      "author": "Patrick Süskind",
+      "originaltitle": "Das Parfum",
+      "release": "1985",
+      "genre": "Historischer Roman",
+      "c": "https://upload.wikimedia.org/wikipedia/de/a/a4/Parfum_Sueskind_Cover_Diogenes.jpg"
+    },
+    {
+      "title": "Der kleine Prinz",
+      "author": "Antoine de Saint-Exupery",
+      "originaltitle": "Le Petit Prince",
+      "release": "1943",
+      "genre": "Philosophisch-poetisches Märchen",
+      "c": "https://images-na.ssl-images-amazon.com/images/I/81d2BW-KUaL.jpg"
+    },
+    {
+      "title": "Buddenbrooks - Verfall einer Familie",
+      "author": "Thomas Mann",
+      "originaltitle": "Buddenbrooks - Verfall einer Familie",
+      "release": "1901",
+      "genre": "Historischer Roman",
+      "c": "https://rdw.hgvcdn.de/resources/FILENAME/9783596294312.jpg"
+    },
+    {
+      "title": "Der Medicus",
+      "author": "Noah Gordon",
+      "originaltitle": "The Physician",
+      "release": "1986",
+      "genre": "Historischer Roman",
+      "c": "https://m.media-amazon.com/images/I/51H0WoIgytL.jpg"
+    },
+    {
+      "title": "Der Alchimist",
+      "author": "Paulo Coelho",
+      "originaltitle": "O Alquimista",
+      "release": "1988",
+      "genre": "Historischer Roman",
+      "c": "https://assets.thalia.media/img/artikel/d99894dd713c3a65651c9f437c863c4cdc202bb9-00-00.jpeg"
+    },
+    {
+      "title": "Harry Potter und der Stein der Weisen",
+      "author": "Joanne K. Rowling",
+      "originaltitle": "Harry Potter and the Philosopher's Stone",
+      "release": "1997",
+      "genre": "Fantasy",
+      "c": "https://images-na.ssl-images-amazon.com/images/I/51dGPQB3gTL.jpg"
+    },
+    {
+      "title": "Die Päpstin",
+      "author": "Donna Woolfolk Cross",
+      "originaltitle": "Pope Joan",
+      "release": "1996",
+      "genre": "Historischer Roman",
+      "c": "https://images-na.ssl-images-amazon.com/images/I/51jqOLwFsZL._SX300_BO1,204,203,200_.jpg"
+    },
+    {
+      "title": "Tintenherz",
+      "author": "Cornelia Funke",
+      "originaltitle": "Tintenherz",
+      "release": "2003",
+      "genre": "Fantasy",
+      "c": "https://m.media-amazon.com/images/I/616xIp9SjGL.jpg"
+    }
+  ]
+}
