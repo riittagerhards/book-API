@@ -16,6 +16,14 @@ const bookCharts = books;
 
 app.use(express.json());
 
+//get all books
+app.get('/api/books', async (_request, response) => {
+  const bookCollection = getBookCollection();
+  const cursor = bookCollection.find();
+  const allBooks = await cursor.toArray();
+  response.status(200).send(allBooks);
+});
+
 //add a new chart of books
 app.post('/api/books', async (request, response) => {
   const bookCollection = getBookCollection();

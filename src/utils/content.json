@@ -22,7 +22,7 @@
       "originaltitle": "Das Parfum",
       "release": "1985",
       "genre": "Historischer Roman",
-      "c": "https://upload.wikimedia.org/wikipedia/de/a/a4/Parfum_Sueskind_Cover_Diogenes.jpg"
+      "cover": "https://upload.wikimedia.org/wikipedia/de/a/a4/Parfum_Sueskind_Cover_Diogenes.jpg"
     },
     {
       "title": "Der kleine Prinz",
@@ -30,7 +30,7 @@
       "originaltitle": "Le Petit Prince",
       "release": "1943",
       "genre": "Philosophisch-poetisches Märchen",
-      "c": "https://images-na.ssl-images-amazon.com/images/I/81d2BW-KUaL.jpg"
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/81d2BW-KUaL.jpg"
     },
     {
       "title": "Buddenbrooks - Verfall einer Familie",
@@ -38,7 +38,7 @@
       "originaltitle": "Buddenbrooks - Verfall einer Familie",
       "release": "1901",
       "genre": "Historischer Roman",
-      "c": "https://rdw.hgvcdn.de/resources/FILENAME/9783596294312.jpg"
+      "cover": "https://rdw.hgvcdn.de/resources/FILENAME/9783596294312.jpg"
     },
     {
       "title": "Der Medicus",
@@ -46,7 +46,7 @@
       "originaltitle": "The Physician",
       "release": "1986",
       "genre": "Historischer Roman",
-      "c": "https://m.media-amazon.com/images/I/51H0WoIgytL.jpg"
+      "cover": "https://m.media-amazon.com/images/I/51H0WoIgytL.jpg"
     },
     {
       "title": "Der Alchimist",
@@ -54,7 +54,7 @@
       "originaltitle": "O Alquimista",
       "release": "1988",
       "genre": "Historischer Roman",
-      "c": "https://assets.thalia.media/img/artikel/d99894dd713c3a65651c9f437c863c4cdc202bb9-00-00.jpeg"
+      "cover": "https://assets.thalia.media/img/artikel/d99894dd713c3a65651c9f437c863c4cdc202bb9-00-00.jpeg"
     },
     {
       "title": "Harry Potter und der Stein der Weisen",
@@ -62,7 +62,7 @@
       "originaltitle": "Harry Potter and the Philosopher's Stone",
       "release": "1997",
       "genre": "Fantasy",
-      "c": "https://images-na.ssl-images-amazon.com/images/I/51dGPQB3gTL.jpg"
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/51dGPQB3gTL.jpg"
     },
     {
       "title": "Die Päpstin",
@@ -70,7 +70,7 @@
       "originaltitle": "Pope Joan",
       "release": "1996",
       "genre": "Historischer Roman",
-      "c": "https://images-na.ssl-images-amazon.com/images/I/51jqOLwFsZL._SX300_BO1,204,203,200_.jpg"
+      "cover": "https://images-na.ssl-images-amazon.com/images/I/51jqOLwFsZL._SX300_BO1,204,203,200_.jpg"
     },
     {
       "title": "Tintenherz",
@@ -78,7 +78,7 @@
       "originaltitle": "Tintenherz",
       "release": "2003",
       "genre": "Fantasy",
-      "c": "https://m.media-amazon.com/images/I/616xIp9SjGL.jpg"
+      "cover": "https://m.media-amazon.com/images/I/616xIp9SjGL.jpg"
     }
   ]
 }
