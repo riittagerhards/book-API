@@ -6,6 +6,7 @@
       "originaltitle": "The Lord of the Rings",
       "release": "1954-1955",
       "genre": "Fantasy",
+      "ISBN": "9783608939842",
       "cover": "https://www.klett-cotta.de/media/1/9783608939842.jpg"
     },
     {
@@ -14,6 +15,7 @@
       "originaltitle": "The Pillars of the Earth",
       "release": "1990",
       "genre": "Historischer Roman",
+      "ISBN": "9783404178124",
       "cover": "https://images-na.ssl-images-amazon.com/images/I/51WBzdTFOFL.jpg"
     },
     {
@@ -22,6 +24,7 @@
       "originaltitle": "Das Parfum",
       "release": "1985",
       "genre": "Historischer Roman",
+      "ISBN": "9783257228007",
       "cover": "https://upload.wikimedia.org/wikipedia/de/a/a4/Parfum_Sueskind_Cover_Diogenes.jpg"
     },
     {
@@ -30,6 +33,7 @@
       "originaltitle": "Le Petit Prince",
       "release": "1943",
       "genre": "Philosophisch-poetisches Märchen",
+      "ISBN": "9783730602294",
       "cover": "https://images-na.ssl-images-amazon.com/images/I/81d2BW-KUaL.jpg"
     },
     {
@@ -38,6 +42,7 @@
       "originaltitle": "Buddenbrooks - Verfall einer Familie",
       "release": "1901",
       "genre": "Historischer Roman",
+      "ISBN": "9783596294312",
       "cover": "https://rdw.hgvcdn.de/resources/FILENAME/9783596294312.jpg"
     },
     {
@@ -46,6 +51,7 @@
       "originaltitle": "The Physician",
       "release": "1986",
       "genre": "Historischer Roman",
+      "ISBN": "9783453471092",
       "cover": "https://m.media-amazon.com/images/I/51H0WoIgytL.jpg"
     },
     {
@@ -54,6 +60,7 @@
       "originaltitle": "O Alquimista",
       "release": "1988",
       "genre": "Historischer Roman",
+      "ISBN": "9783257237276",
       "cover": "https://assets.thalia.media/img/artikel/d99894dd713c3a65651c9f437c863c4cdc202bb9-00-00.jpeg"
     },
     {
@@ -62,6 +69,7 @@
       "originaltitle": "Harry Potter and the Philosopher's Stone",
       "release": "1997",
       "genre": "Fantasy",
+      "ISBN": "9783551557414",
       "cover": "https://images-na.ssl-images-amazon.com/images/I/51dGPQB3gTL.jpg"
     },
     {
@@ -70,6 +78,7 @@
       "originaltitle": "Pope Joan",
       "release": "1996",
       "genre": "Historischer Roman",
+      "ISBN": "9783352009518",
       "cover": "https://images-na.ssl-images-amazon.com/images/I/51jqOLwFsZL._SX300_BO1,204,203,200_.jpg"
     },
     {
@@ -78,6 +87,7 @@
       "originaltitle": "Tintenherz",
       "release": "2003",
       "genre": "Fantasy",
+      "ISBN": "9783841500120",
       "cover": "https://m.media-amazon.com/images/I/616xIp9SjGL.jpg"
     }
   ]

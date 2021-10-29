@@ -25,10 +25,10 @@ app.get('/api/books', async (_request, response) => {
 });
 
 //get a single book
-app.get('/api/books/:titel', async (request, response) => {
+app.get('/api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
-  const singleBook = request.params.titel;
-  const bookRequest = await bookCollection.findOne({ title: singleBook });
+  const singleBook = request.params.ISBN;
+  const bookRequest = await bookCollection.findOne({ ISBN: singleBook });
   if (!bookRequest) {
     response.status(404).send('Unknown titel');
   } else {
@@ -52,29 +52,46 @@ app.post('/api/books', async (request, response) => {
 });
 
 //add a single new book
-app.post('/api/books', async (request, response) => {
+app.post('/api/books/', async (request, response) => {
   const bookCollection = getBookCollection();
   const newBook = request.body;
-  const doesBookExist = await bookCollection.findOne({ title: newBook.title });
-  if (!doesBookExist) {
-    await bookCollection.insertOne(newBook);
-    response.status(200).send(`${newBook.title} added`);
+  const doesBookExist = await bookCollection.findOne({ ISBN: newBook.ISBN });
+  if (doesBookExist) {
+    response.status(409).send(`Book ${newBook.title} cannot be added twice`);
   } else {
-    response.status(409).send('Book already exists');
+    bookCollection.insertOne(newBook);
+    response.send(`Book ${newBook.title} added to the collection`);
   }
 });
 
 //delete one book
-app.delete('/api/books/:title', async (request, response) => {
+app.delete('/api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
-  const bookToRemove = request.params.title;
-  const findBook = await bookCollection.findOne({ title: bookToRemove });
+  const bookToRemove = request.params.ISBN;
+  const findBook = await bookCollection.findOne({ ISBN: bookToRemove });
   if (findBook) {
     await bookCollection.deleteOne(findBook);
-    response.send(`Book ${bookToRemove} deleted`);
+    response.send(`Book ISBN number ${bookToRemove} deleted`);
   } else {
     response.status(404).send('This chart doesnt contain your title');
   }
+});
+
+//update book information
+app.post('api/books/:ISBN', async (request, response) => {
+  const bookCollection = getBookCollection();
+  const newField = request.body;
+  const bookUpdate = request.params.ISBN;
+
+  const updateBook = await bookCollection.updateOne(
+    { ISBN: bookUpdate },
+    { $set: newField }
+  );
+  if (updateBook.matchedCount === 0) {
+    response.status(404).send('Title not found');
+    return;
+  }
+  response.send('Title updated');
 });
 
 app.get('/', (_req, res) => {
