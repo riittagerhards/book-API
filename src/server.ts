@@ -52,16 +52,18 @@ app.post('/api/books', async (request, response) => {
 });
 
 //add a single new book
-app.post('/api/books/', async (request, response) => {
+
+app.post('/api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
   const newBook = request.body;
-  const doesBookExist = await bookCollection.findOne({ ISBN: newBook.ISBN });
+  const findBook = request.body.ISBN;
+  const doesBookExist = await bookCollection.findOne({ ISBN: findBook });
   if (doesBookExist) {
-    response.status(409).send(`Book ${newBook.title} cannot be added twice`);
-  } else {
-    bookCollection.insertOne(newBook);
-    response.send(`Book ${newBook.title} added to the collection`);
+    response.status(400).send(`Book ${newBook.title} already exists`);
+    return;
   }
+  await bookCollection.insertOne(newBook);
+  response.status(200).send(`Book ${newBook.title} added to collection`);
 });
 
 //delete one book
@@ -78,6 +80,32 @@ app.delete('/api/books/:ISBN', async (request, response) => {
 });
 
 //update book information
+app.patch('api/books/:ISBN', async (request, response) => {
+  const bookCollection = getBookCollection();
+  const newField = request.body;
+  const bookUpdate = request.params.ISBN;
+  const updateBook = await bookCollection.updateOne(
+    { ISBN: bookUpdate },
+    { $set: newField }
+  );
+  if (updateBook.matchedCount === 0) {
+    response.status(404).send('Title not found');
+    return;
+  }
+  response.send('Title updated');
+});
+
+app.get('/', (_req, res) => {
+  res.send('Hello Bookworld!');
+});
+
+connectDatabase(process.env.MONGODB_URI).then(() =>
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  })
+);
+
+/*
 app.post('api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
   const newField = request.body;
@@ -93,13 +121,4 @@ app.post('api/books/:ISBN', async (request, response) => {
   }
   response.send('Title updated');
 });
-
-app.get('/', (_req, res) => {
-  res.send('Hello World!');
-});
-
-connectDatabase(process.env.MONGODB_URI).then(() =>
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-  })
-);
+*/
