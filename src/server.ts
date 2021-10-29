@@ -40,10 +40,10 @@ app.get('/api/books/:titel', async (request, response) => {
 app.post('/api/books', async (request, response) => {
   const bookCollection = getBookCollection();
   const newBook = request.body;
-  const existingBook = await bookCollection.findOne({
+  const doesBookExist = await bookCollection.findOne({
     title: newBook.title,
   });
-  if (!existingBook) {
+  if (!doesBookExist) {
     await bookCollection.insertMany(bookCharts);
     response.status(200).send('Book chart added');
   } else {
@@ -51,18 +51,14 @@ app.post('/api/books', async (request, response) => {
   }
 });
 
-//add one new book
+//add a single new book
 app.post('/api/books', async (request, response) => {
   const bookCollection = getBookCollection();
   const newBook = request.body;
-  const existingBook = await bookCollection.findOne({
-    title: newBook.title,
-  });
-  if (!existingBook) {
-    const insertedBook = await bookCollection.insertOne(newBook);
-    response
-      .status(200)
-      .send(`${newBook.title} added, with ID: ${insertedBook.insertedId}`);
+  const doesBookExist = await bookCollection.findOne({ title: newBook.title });
+  if (!doesBookExist) {
+    await bookCollection.insertOne(newBook);
+    response.status(200).send(`${newBook.title} added`);
   } else {
     response.status(409).send('Book already exists');
   }
@@ -72,9 +68,7 @@ app.post('/api/books', async (request, response) => {
 app.delete('/api/books/:title', async (request, response) => {
   const bookCollection = getBookCollection();
   const bookToRemove = request.params.title;
-  const findBook = await bookCollection.findOne({
-    title: bookToRemove,
-  });
+  const findBook = await bookCollection.findOne({ title: bookToRemove });
   if (findBook) {
     await bookCollection.deleteOne(findBook);
     response.send(`Book ${bookToRemove} deleted`);

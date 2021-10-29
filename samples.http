@@ -2,13 +2,22 @@
 GET http://localhost:3000/api/books HTTP/1.1
 
 ###GET a single book
-GET http://localhost:3000/api/books/Tintenherz HTTP/1.1
+GET http://localhost:3000/api/books/Der Medicus HTTP/1.1
 
 ###GET a single book that does not exist
 GET http://localhost:3000/api/books/asinglebook HTTP/1.1
 
 ###POST a single book
 POST http://localhost:3000/api/books/Tintenherz
+
+    {
+      "title": "Tintenherz",
+      "author": "Cornelia Funke",
+      "originaltitle": "Tintenherz",
+      "release": "2003",
+      "genre": "Fantasy",
+      "cover": "https://m.media-amazon.com/images/I/616xIp9SjGL.jpg"
+    }
 
 ###POST a bookchart
 POST http://localhost:3000/api/books HTTP/1.1
@@ -24,4 +33,4 @@ Content-Type: application/json
     } 
 
 ###DELETE a book
-DELETE http://localhost:3000/api/books/Der%20Medicus HTTP/1.1
+DELETE http://localhost:3000/api/books/Der%20Herr%20der%20Ringe HTTP/1.1
