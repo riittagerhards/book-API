@@ -1,0 +1,18 @@
+###DELETE a book
+DELETE http://localhost:3000/api/books/Der%20Medicus HTTP/1.1
+
+###POST a single book
+POST http://localhost:3000/api/books/Tintenherz
+
+###POST a bookchart
+POST http://localhost:3000/api/books HTTP/1.1
+Content-Type: application/json
+
+    {
+      "title": "Der Herr der Ringe",
+      "author": "John R. R. Tolkien",
+      "originaltitle": "The Lord of the Rings",
+      "release": "1954-1955",
+      "genre": "Fantasy",
+      "cover": "https://www.klett-cotta.de/media/1/9783608939842.jpg"
+    } 
