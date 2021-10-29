@@ -39,8 +39,10 @@ app.post('/api/books', async (request, response) => {
     title: newBook.title,
   });
   if (!existingBook) {
-    await bookCollection.insertOne(newBook);
-    response.status(200).send('Book added');
+    const insertedBook = await bookCollection.insertOne(newBook);
+    response
+      .status(200)
+      .send(`${newBook.title} added, with ID: ${insertedBook.insertedId}`);
   } else {
     response.status(409).send('Book already exists');
   }
