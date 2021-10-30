@@ -16,14 +16,34 @@ const bookCharts = books;
 
 app.use(express.json());
 
+//get all books
+app.get('/api/books', async (_request, response) => {
+  const bookCollection = getBookCollection();
+  const cursor = bookCollection.find();
+  const allBooks = await cursor.toArray();
+  response.status(200).send(allBooks);
+});
+
+//get a single book
+app.get('/api/books/:ISBN', async (request, response) => {
+  const bookCollection = getBookCollection();
+  const singleBook = request.params.ISBN;
+  const bookRequest = await bookCollection.findOne({ ISBN: singleBook });
+  if (!bookRequest) {
+    response.status(404).send('Unknown titel');
+  } else {
+    response.send(bookRequest);
+  }
+});
+
 //add a new chart of books
 app.post('/api/books', async (request, response) => {
   const bookCollection = getBookCollection();
   const newBook = request.body;
-  const existingBook = await bookCollection.findOne({
+  const doesBookExist = await bookCollection.findOne({
     title: newBook.title,
   });
-  if (!existingBook) {
+  if (!doesBookExist) {
     await bookCollection.insertMany(bookCharts);
     response.status(200).send('Book chart added');
   } else {
@@ -31,40 +51,52 @@ app.post('/api/books', async (request, response) => {
   }
 });
 
-//add one new book
-app.post('/api/books', async (request, response) => {
+//add a single new book
+
+app.post('/api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
   const newBook = request.body;
-  const existingBook = await bookCollection.findOne({
-    title: newBook.title,
-  });
-  if (!existingBook) {
-    const insertedBook = await bookCollection.insertOne(newBook);
-    response
-      .status(200)
-      .send(`${newBook.title} added, with ID: ${insertedBook.insertedId}`);
-  } else {
-    response.status(409).send('Book already exists');
+  const findBook = request.body.ISBN;
+  const doesBookExist = await bookCollection.findOne({ ISBN: findBook });
+  if (doesBookExist) {
+    response.status(400).send(`Book ${newBook.title} already exists`);
+    return;
   }
+  await bookCollection.insertOne(newBook);
+  response.status(200).send(`Book ${newBook.title} added to collection`);
 });
 
 //delete one book
-app.delete('/api/books/:title', async (request, response) => {
+app.delete('/api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
-  const bookToRemove = request.params.title;
-  const findBook = await bookCollection.findOne({
-    title: bookToRemove,
-  });
+  const bookToRemove = request.params.ISBN;
+  const findBook = await bookCollection.findOne({ ISBN: bookToRemove });
   if (findBook) {
     await bookCollection.deleteOne(findBook);
-    response.send(`Book ${bookToRemove} deleted`);
+    response.send(`Book ISBN number ${bookToRemove} deleted`);
   } else {
     response.status(404).send('This chart doesnt contain your title');
   }
 });
 
+//update book information
+app.patch('/api/books/:ISBN', async (request, response) => {
+  const bookCollection = getBookCollection();
+  const bookToUpdate = request.params.ISBN;
+  const newFiel = request.body;
+  const update = await bookCollection.findOneAndUpdate({ ISBN: bookToUpdate }, [
+    { $set: newFiel },
+  ]);
+  if (!update) {
+    response.send('This chart doesnt contain your title');
+  }
+  response
+    .status(200)
+    .send(`Update done for book with ISBN number ${bookToUpdate}`);
+});
+
 app.get('/', (_req, res) => {
-  res.send('Hello World!');
+  res.send('Hello Bookworld!');
 });
 
 connectDatabase(process.env.MONGODB_URI).then(() =>
