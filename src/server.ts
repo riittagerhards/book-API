@@ -80,19 +80,19 @@ app.delete('/api/books/:ISBN', async (request, response) => {
 });
 
 //update book information
-app.patch('api/books/:ISBN', async (request, response) => {
+app.patch('/api/books/:ISBN', async (request, response) => {
   const bookCollection = getBookCollection();
-  const newField = request.body;
-  const bookUpdate = request.params.ISBN;
-  const updateBook = await bookCollection.updateOne(
-    { ISBN: bookUpdate },
-    { $set: newField }
-  );
-  if (updateBook.matchedCount === 0) {
-    response.status(404).send('Title not found');
-    return;
+  const bookToUpdate = request.params.ISBN;
+  const newFiel = request.body;
+  const update = await bookCollection.findOneAndUpdate({ ISBN: bookToUpdate }, [
+    { $set: newFiel },
+  ]);
+  if (!update) {
+    response.send('This chart doesnt contain your title');
   }
-  response.send('Title updated');
+  response
+    .status(200)
+    .send(`Update done for book with ISBN number ${bookToUpdate}`);
 });
 
 app.get('/', (_req, res) => {
@@ -104,21 +104,3 @@ connectDatabase(process.env.MONGODB_URI).then(() =>
     console.log(`Example app listening at http://localhost:${port}`);
   })
 );
-
-/*
-app.post('api/books/:ISBN', async (request, response) => {
-  const bookCollection = getBookCollection();
-  const newField = request.body;
-  const bookUpdate = request.params.ISBN;
-
-  const updateBook = await bookCollection.updateOne(
-    { ISBN: bookUpdate },
-    { $set: newField }
-  );
-  if (updateBook.matchedCount === 0) {
-    response.status(404).send('Title not found');
-    return;
-  }
-  response.send('Title updated');
-});
-*/
