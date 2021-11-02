@@ -8,7 +8,7 @@ GET http://localhost:3000/api/books/9783257228007 HTTP/1.1
 GET http://localhost:3000/api/books/asinglebook HTTP/1.1
 
 ###POST a single book
-POST http://localhost:3000/api/books/9783608939842
+POST http://localhost:3000/api/books
 Content-Type: application/json
 
     {

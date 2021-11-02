@@ -79,17 +79,14 @@ app.post('/api/books', async (request, response) => {
 });
 
 //add a single new book
-app.post('/api/books/:ISBN', async (request, response) => {
-  const bookCollection = getBookCollection();
+app.post('/api/books/', async (request, response) => {
   const newBook = request.body;
-  const findBook = request.body.ISBN;
-  const doesBookExist = await bookCollection.findOne({ ISBN: findBook });
-  if (doesBookExist) {
-    response.status(400).send(`Book ${newBook.title} already exists`);
-    return;
+  try {
+    await getBookCollection().insertOne(newBook);
+    response.status(200).send('Book added to collection');
+  } catch (error) {
+    response.status(409).send('Book  already exists');
   }
-  await bookCollection.insertOne(newBook);
-  response.status(200).send(`Book ${newBook.title} added to collection`);
 });
 
 //delete one book
@@ -128,5 +125,6 @@ app.get('/', (_req, res) => {
 connectDatabase(process.env.MONGODB_URI).then(() =>
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
+    getBookCollection().createIndex({ ISBN: 1 }, { unique: true });
   })
 );
